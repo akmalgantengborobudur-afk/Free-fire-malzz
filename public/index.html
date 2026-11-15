@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Free Fire Companion</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:#101827;color:#f4f7fb;font:16px system-ui,sans-serif;display:grid;place-items:center;padding:22px}
+    main{width:min(100%,480px);background:#1b293b;border:1px solid #34445a;border-radius:20px;padding:25px}
+    h1{margin:0 0 8px;font-size:26px}p{color:#c1ccda;line-height:1.5}
+    .notice{background:#142235;border-radius:10px;padding:12px;font-size:13px}
+    label.field{display:block;margin:16px 0 7px;font-weight:600}
+    input[type=text]{width:100%;padding:13px;border-radius:10px;border:1px solid #52647b;background:#101827;color:white;font:inherit}
+    .consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0;color:#dce5ef;font-size:14px}
+    button,.google{display:block;width:100%;border:0;border-radius:11px;padding:13px;text-align:center;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+    .google{background:white;color:#172033;margin:18px 0 12px}.submit{background:#35c98a;color:#082418}.logout{background:#34445a;color:white;margin-top:10px}
+    .muted{font-size:12px;color:#aab8ca}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Free Fire Companion</h1>
+  <p>Masuk dengan Google, lalu isi profil game yang ingin kamu bagikan.</p>
+  <p class="notice">Aplikasi ini tidak meminta password Google, kode OTP, atau password Free Fire. Login Google hanya memberikan nama dan email dasar setelah izin.</p>
+  <a class="google" href="/auth/google">Lanjutkan dengan Google</a>
+  <form method="post" action="/notify">
+    <label class="field" for="uid">UID Free Fire</label>
+    <input id="uid" name="uid" type="text" maxlength="40" required placeholder="Masukkan UID kamu">
+    <label class="field" for="nickname">Nickname Free Fire</label>
+    <input id="nickname" name="nickname" type="text" maxlength="40" required placeholder="Masukkan nickname kamu">
+    <label class="consent">
+      <input type="checkbox" name="consent" value="yes" required>
+      <span>Saya setuju nama, email Google, UID, dan nickname yang saya masukkan dikirim melalui WhatsApp ke nomor yang dikonfigurasi pengelola.</span>
+    </label>
+    <button class="submit" type="submit">Kirim notifikasi WhatsApp</button>
+  </form>
+  <form method="post" action="/logout"><button class="logout" type="submit">Keluar dari sesi</button></form>
+  <p class="muted">Contoh awal: data profil tidak disimpan ke database. Sebelum dipakai publik, wajib gunakan HTTPS dan penyimpanan sesi produksi yang aman.</p>
+</main>
+</body>
+</html>
